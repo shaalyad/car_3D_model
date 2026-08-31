@@ -116,12 +116,10 @@ export function CarAnimation() {
         const glass = carModel.getObjectByName("glass") as THREE.Mesh;
         if (glass) glass.material = glassMaterial;
 
-        wheels.push(
-          carModel.getObjectByName("wheel_f1"),
-          carModel.getObjectByName("wheel_fr"),
-          carModel.getObjectByName("wheel_bl"),
-          carModel.getObjectByName("wheel_br"),
-        );
+        ["wheel_f1", "wheel_fr", "wheel_bl", "wheel_br"].forEach((name) => {
+          const wheel = carModel.getObjectByName(name);
+          if (wheel) wheels.push(wheel);
+        });
 
         // creating the mesh
 
